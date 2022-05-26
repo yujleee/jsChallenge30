@@ -1,3 +1,4 @@
+const hand = document.querySelector('.hand');
 const secondHand = document.querySelector('.second-hand');
 const minHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
@@ -18,6 +19,18 @@ function setDate() {
   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
   minHand.style.transform = `rotate(${minutesDegrees}deg)`;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+  if (seconds === 0) {
+    secondHand.style.transitionDuration = '0s';
+  }
+
+  if (minutes === 0) {
+    minHand.style.transitionDuration = '0s';
+  }
+
+  if (hours === 0) {
+    hourHand.style.transitionDuration = '0s';
+  }
 
   digital.innerHTML = `${hours < 10 ? `0${hours}` : hours} : ${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}` : seconds}`;
 }
