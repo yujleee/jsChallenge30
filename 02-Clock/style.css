@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'LAB디지털';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/LAB디지털.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  background-color: #4158d0;
+  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  font-family: 'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  font-family: 'LAB디지털';
+}
+
+.digital {
+  padding-top: 10rem;
+  font-size: 4rem;
+}
+
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid white;
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* account for the height of the clock hands */
+}
+
+.hand {
+  width: 40%;
+  height: 6px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: transform 300ms;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.hour-hand {
+  width: 30%;
+  left: 20%;
+  height: 9px;
+  z-index: 30;
+  background-color: #fafafa;
+}
+
+.min-hand {
+  height: 5px;
+  background-color: #ffcc70;
+  z-index: 20;
+}
+
+.second-hand {
+  width: 50%;
+  top: 51%;
+  left: 0;
+  height: 2px;
+  background-color: #4158d0;
+}
