@@ -1,5 +1,8 @@
-// TODO :: 지우기
-
+const controlHue = document.querySelector('#hue');
+const colorValue = document.querySelector('.color-value');
+const controlSize = document.querySelector('#size');
+const sizeValue = document.querySelector('.size-value');
+const clearButton = document.querySelector('.clear-button');
 const canvas = document.querySelector('#draw');
 const ctx = canvas.getContext('2d');
 
@@ -20,7 +23,6 @@ let direction = true;
 
 function draw(e) {
   if (!isDrawing) return;
-  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.moveTo(lastX, lastY);
   ctx.lineTo(e.offsetX, e.offsetY);
@@ -28,17 +30,36 @@ function draw(e) {
 
   [lastX, lastY] = [e.offsetX, e.offsetY];
 
-  // TODO :: 색상 컨트롤 바 만들기
-  hue++;
-  if (hue >= 360) {
-    hue = 0;
-  }
+  //   hue++;
+  //   if (hue >= 360) {
+  //     hue = 0;
+  //   }
 
-  // TODO :: 굵기 조절 컨트롤 바 만들기
-  if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
-    direction = !direction;
-  }
-  direction ? ctx.lineWidth++ : ctx.lineWidth--;
+  //   if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+  //     direction = !direction;
+  //   }
+  //   direction ? ctx.lineWidth++ : ctx.lineWidth--;
+}
+
+// TODO :: 색상 컨트롤 바 만들기
+function changeColor() {
+  const currentHue = controlHue.value;
+  hue = currentHue;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  colorValue.innerHTML = `${currentHue}`;
+}
+
+// TODO :: 굵기 조절 컨트롤 바 만들기
+function changeSize() {
+  const currentSize = controlSize.value;
+  ctx.lineWidth = currentSize;
+
+  sizeValue.innerHTML = `${currentSize}`;
+}
+
+// TODO :: 지우기
+function clearAll() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 canvas.addEventListener('mousemove', draw);
@@ -48,3 +69,7 @@ canvas.addEventListener('mousedown', (e) => {
 });
 canvas.addEventListener('mouseup', () => (isDrawing = false));
 canvas.addEventListener('mouseout', () => (isDrawing = false));
+
+controlHue.addEventListener('change', changeColor);
+controlSize.addEventListener('change', changeSize);
+clearButton.addEventListener('click', clearAll);

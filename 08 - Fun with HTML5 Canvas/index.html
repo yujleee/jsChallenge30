@@ -3,16 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <title>HTML5 Canvas</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="control-bar">
+      <strong>🎨 Color</strong>
+      <form action="">
+        <input type="range" id="hue" value="0" min="0" max="360" />
+        <p class="color-value">0</p>
+      </form>
+
+      <strong>🖌 Size</strong>
+      <form action="">
+        <input type="range" id="size" value="0" min="0" max="100" />
+        <p class="size-value">0</p>
+      </form>
+      <button type="button" class="clear-button">Clear Canvas</button>
+    </div>
+
     <canvas id="draw" width="800" height="800"></canvas>
     <script src="./index.js"></script>
-
-    <style>
-      html,
-      body {
-        margin: 0;
-      }
-    </style>
   </body>
 </html>
